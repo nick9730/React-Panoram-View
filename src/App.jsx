@@ -18,7 +18,7 @@ import LoginLayout from "./compoments/ui/LoginLayout";
 import RedicredRouter from "./compoments/ui/RedicredRoute";
 import PanoramaView from "./compoments/panorama-content/panorama/PanoramaView";
 import { ContextProject } from "./compoments/context/ContextProjext";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 import Settings from "./compoments/panorama-content/Settings/Settings";
 import NotPageFound from "./compoments/pages/NotPageFound";
