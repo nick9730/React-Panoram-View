@@ -88,7 +88,7 @@ function App() {
       }}
       />
       
-      <ReactQueryDevtools initialIsOpen={false} />
+     
     </QueryClientProvider>
       </ContextProject>
   
