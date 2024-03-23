@@ -24,7 +24,7 @@ const Img = styled.img`
 export default function Logo() {
 	return (
 		<StyledLogo to={"/profile"}>
-			<Img src={"image.webp"} alt="logo"></Img>
+			<Img src={"./image.webp"} alt="logo"></Img>
 		</StyledLogo>
 	);
 }
