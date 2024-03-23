@@ -1,8 +1,8 @@
 
 import styled from "styled-components"
 import Button from  '../ui/Button'
-import Heading from '../../../../panorama/src/compoments/ui/Heading';
-import Modal from '../../../../panorama/src/compoments/ui/Modal';
+
+
 import ProjectPreviewItem from "../panorama-content/projects/ProjectPreviewItem"
 
 import AddForm from "../panorama-content/projects/AddForm";
@@ -10,6 +10,8 @@ import Menus from "../ui/Menus";
 
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useGetProject } from "../panorama-content/projects/useGetProject";
+import Heading from "../ui/Heading";
+import Modal from "../ui/Modal";
 
 
 const StyledRow =styled.div`
