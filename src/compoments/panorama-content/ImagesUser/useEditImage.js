@@ -1,12 +1,3 @@
-
-
-
-
-export function useEditImage(){
-
-const queryProject = useQueryClient();
-
-
-
-
+export function useEditImage() {
+	const queryProject = useQueryClient();
 }

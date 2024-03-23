@@ -1,18 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-
-import UpdateForm from '../panorama-content/Users/UpdateForm';
-
-
-
+import UpdateForm from "../panorama-content/Users/UpdateForm";
 
 export default function Users() {
-  return (
-
-
-
-  <UpdateForm/>
-
-
-  
-    )}
+	return <UpdateForm />;
+}

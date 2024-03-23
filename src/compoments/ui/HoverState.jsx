@@ -1,21 +1,15 @@
+import React, { useState } from "react";
 
+export default function HoverState({ children }) {
+	const [hoverState, setHoverState] = useState(false);
 
-import React, { useState } from 'react'
+	function HoverOver() {
+		setHoverState(true);
+	}
 
-export default function HoverState({children}) {
-    const [hoverState,setHoverState] = useState(false)
+	function HoverOut() {
+		setHoverState(false);
+	}
 
-    function HoverOver(){
-        setHoverState(true)
-      }
-    
-      
-      function HoverOut(){
-        setHoverState(false)
-      }
-    
-
-  return (
-    <div>HoverState</div>
-  )
+	return <div>HoverState</div>;
 }

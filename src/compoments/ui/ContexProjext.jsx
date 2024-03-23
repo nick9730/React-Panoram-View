@@ -14,20 +14,15 @@
 
 // }
 
-
-
-
-
-
 // function reducer(state,action){
- 
+
 //   switch(action.type){
-//     case   "status" : 
+//     case   "status" :
 //     return{
 //       ...state,
 //       status:action.payload
 //     }
-//     case "success": 
+//     case "success":
 //     return{
 //       ...state,
 //       success:false
@@ -37,7 +32,7 @@
 //         ...state,
 //         isLoading:true
 //       }
-//      case "projects/loaded" : 
+//      case "projects/loaded" :
 //      return {
 //       ...state,
 //       isLoading:false,
@@ -48,7 +43,7 @@
 //         ...state,
 //          isLoading:false,
 //          currentProject:action.payload,
-      
+
 //       }
 //       case "project/created":
 //         return{
@@ -63,7 +58,7 @@
 //           ...state,
 //           isLoading:false,
 //           projects:state.projects.filter((project)=>project.id !==action.payload),
-          
+
 //         }
 //         case "project/update":
 //           return{
@@ -71,7 +66,7 @@
 //             isLoading:false,
 //             projects:[...state.projects,action.payload],
 //             currentProject:action.payload,
-          
+
 //           }
 //      case "rejected" :
 //       return{
@@ -82,20 +77,14 @@
 //       default :  return {...InitialState}
 //     }
 
-
-
 // }
-
-
 
 // const ProjectContext = createContext();
 
 // function ContexProjext({children}) {
 
-
 //   const [{status,projects,currentProject,isLoading,success},dispatch] = useReducer(reducer,InitialState)
 
-  
 //     // const [isLoading,setIsLoading] = useState(false)
 //   // const [message,setMessage] = useState('')
 //   // const [project,setProject] = useState([])
@@ -103,76 +92,57 @@
 
 //   // const [currentData,setCurrentData] = useState([])
 
-
-
-
-    
 //     useEffect(function(){
 //       const controller = new AbortController();
 //         async function getProjects(){
 //        dispatch({type:"loading"})
 //          try {
 //              const response = await fetch(`${BaseUrl}/projects/`,{
-            
+
 //                 signal:controller.signal
-              
+
 //              });
 //               const data = await response.json()
-            
-//             return  dispatch({type:"projects/loaded",payload:data}) 
-                               
-//                } 
-         
+
+//             return  dispatch({type:"projects/loaded",payload:data})
+
+//                }
+
 //          catch (error) {
 //                 dispatch({type:"rejected",payload: 'There was one problem with loading of icons'})
-       
+
 //          }
 //          return ()=>controller.abort();
 //      }
-//     getProjects(); 
-    
+//     getProjects();
+
 //     },[])
 
+//    const appearProject= useCallback(async function appearProjects(id,controller){
 
-
-//    const appearProject= useCallback(async function appearProjects(id,controller){ 
-     
 //     if(currentProject?.id===Number(id))return
 
 //     dispatch({type:"loading"})
 //     try {
-   
+
 //       const response  = await fetch(`${BaseUrl}/projects/${id}`,
 //       {
 //         signal:controller.signal
 //       })
-//       const data = await response.json(); 
+//       const data = await response.json();
 //    dispatch({type:"project/loaded",payload:data})
 //     } catch (error) {
 //       dispatch({type:"rejected",payload: 'There was one problem with loading of currentProject'})
 
 //     }
-  
-   
 
 //     },[currentProject?.id])
 
-
-
-  
-
-  
-
-
-
-
-
-
 //     async function createProject(newProject){
 //       dispatch({type:"loading"})
-//       try 
+//       try
 //       {
-       
+
 //         const res = await fetch(`${BaseUrl}/projects/`,
 //         {
 //           method :"POST",
@@ -180,43 +150,38 @@
 //           headers:{
 //             "Content-Type" : "application/json"
 //           }
-      
+
 //         }
-        
+
 //         );
 //         const data = await res.json();
 //         if(dispatch({type:"project/created",payload:data})) return toast.success('Nikos')
-     
+
 //       }
-    
+
 //     catch{
 //       dispatch({type:"rejected",payload: 'There was one problem with loading of icons'})
-    
 
 //     }
-  
+
 //   }
-  
 
 //     async function deleteProject(id){
 //       dispatch({type:"loading"})
-//       try 
+//       try
 //       {
-       
+
 //           await fetch(`${BaseUrl}/projects/${id}`,
 //         {
 //           method:   "DELETE"
 //         }
-        
+
 //         );
 
-   
 //       dispatch({type:"project/deleted",payload:id})
-  
-  
 
 //       }
-    
+
 //     catch{
 //       dispatch({type:"rejected",payload: 'There was one problem with deleted of project'})
 //       dispatch({type:"success"})
@@ -227,13 +192,12 @@
 
 //  }
 //   }
- 
 
 // async function Update(id,replaceItem){
 //   dispatch({type:"loading"})
-//     try 
+//     try
 //     {
-     
+
 //      const res =await fetch(`${BaseUrl}/projects/${id}`,
 //      {
 //       method:'PUT',
@@ -241,29 +205,25 @@
 //       headers:{
 //         "Content-Type" : "application/json"
 //       }
-  
+
 //      });
 //        const data = res.json();
-       
+
 //     dispatch({
 //       type:"project/update",payload:data
 //     })
-  
+
 //     dispatch({type:"status",payload:"isUpdating"})
 
 //     }
-  
+
 //   catch{  dispatch({type:"success"})
 //     dispatch({type:"rejected",payload: 'There was one problem with loading of icons'})
-  
 
 //   }
 
 // }
 
-
-
-   
 //   return (
 //     <ProjectContext.Provider value= {{status,success,isLoading,projects,currentProject,appearProject,deleteProject,Update,createProject}}>
 //         {children}
@@ -271,10 +231,7 @@
 //   )
 // }
 
-
-
-
-// function useProjects(){ 
+// function useProjects(){
 //   const contect = useContext(ProjectContext);
 //   if(contect===undefined) throw new Error("Den bghke")
 //   return contect

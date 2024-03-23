@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 const GlobalStyles = createGlobalStyle`
 
     :root {
@@ -145,6 +144,6 @@ const GlobalStyles = createGlobalStyle`
         filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
       }
       
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;
