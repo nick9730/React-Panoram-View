@@ -16,22 +16,18 @@ const Inputinvisible = styled.input`
 `;
 
 export default function AddForm({ onCloseModal }) {
-	// const [name,setName] = useState('');
-	// const [num,setNum] = useState(0);
-	// const [numOfPhotos,setnumOfPhotos] = useState(0);
 
-	//   const {success,currentProject,createProject,isLoading} = useProjects()
 
+	const { createdProject, isCreating } = AddProject();
 	const { handleSubmit, formState, register, reset } =
 		useForm();
 	const { errors } = formState;
-	const { createdProject, isCreating } = AddProject();
 
 	function onSubmite(data) {
 		createdProject(
 			{ ...data },
 			{
-				onSuccess: (data) => {
+				onSuccess: ({data}) => {
 					reset();
 					onCloseModal?.();
 				},
@@ -42,7 +38,7 @@ export default function AddForm({ onCloseModal }) {
 	const { user } = Getuser();
 	const { id } = user;
 
-	console.log(user);
+	console.log(isCreating);
 
 	return (
 		<Form type="modal" onSubmit={handleSubmit(onSubmite)}>

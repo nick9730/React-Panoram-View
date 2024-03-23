@@ -17,18 +17,6 @@ const Info = styled.div`
 	flex-direction: column;
 `;
 
-// const Img = styled.img`
-//      width:1000px ;
-//      height: 400px;
-//      transition: 2s;
-
-//      &:hover{
-//       filter: blur(3px);
-//       background-color: gray;
-//       color: gray;
-//      }
-
-// `
 
 const StyledName = styled.div`
 	text-decoration: solid;
@@ -90,67 +78,21 @@ const StyledNavLinkj = styled(NavLink)`
 		color: black;
 	}
 `;
-// const ButtonInfo = styled.button`
-//  position: absolute;
-//   top: 50%;
-//   left: 30%;
-//   transform: translate(+50%, -50%);
-//   -ms-transform: translate(-50%, -50%);
-//   background-color: #555;
-//   color: white;
-//   font-size: 16px;
-//   padding: 20px 80px;
-//   border: none;
-//   cursor: pointer;
-//   border-radius: 5px;
-//   transition: 3s;
 
-// `
-
-// const ButtonEdit= styled(NavLink)`
-//  position: absolute;
-//   top: 50%;
-//   left: 60%;
-//   transform: translate(+50%, -50%);
-//   -ms-transform: translate(-50%, -50%);
-//   background-color: #555;
-//   color: white;
-//   font-size: 16px;
-//   padding: 20px 80px;
-//   border: none;
-//   cursor: pointer;
-//   border-radius: 5px;
-//   transition: 3s;
-
-// `
 
 const Img = styled.img`
-	/* ${(props) =>
-		props.type === "regular" &&
-		css`
-			transition: 2s;
-		`} */
 
-	/* ${(props) =>
-		props.type === "hoverImage" &&
-		css`
-			filter: blur(3px);
-			background-color: gray;
-			color: gray;
-		`} */
 	transition: 2s;
 	width: 800px;
 	height: 400px;
 `;
-// Img.defaultProps= {
-//   type: "hoverImage"
-// }
+
 
 export default function GetItemImages({ images, index }) {
 	const [hover, setHover] = useState(false);
 	const [show, setShow] = useState(false);
 	const [id, setId] = useState();
-	const { deletedImage } = useDeleteImage();
+	const { deletedImage,status } = useDeleteImage();
 	const { Images } = useGetImages();
 	const { id: ParamsID } = useParams();
 	const { id: ImageId, name } = images;
@@ -162,21 +104,23 @@ export default function GetItemImages({ images, index }) {
 		);
 	}, [ParamsID]);
 
-	// useEffect(() => {
-	//   localStorage.setItem('index', JSON.stringify(index));
-	// }, []);
+
+  if (status==='pending'){
+	return "xxxx"
+  }
+
 
 	function MouseOver() {
 		setHover(true);
-		console.log(hover);
+
 	}
 	function MouseDown() {
 		setHover(false);
-		console.log(hover);
+	
 	}
 
 	function Edit() {
-		console.log(index);
+		
 		localStorage.setItem("index", JSON.stringify(index));
 	}
 	return (

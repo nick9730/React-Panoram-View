@@ -12,14 +12,6 @@ const StyledGallery = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
-const StyledClip = styled.div`
-	display: flex;
-	flex-direction: row-reverse;
-	width: 100%;
-	height: 50vh;
-	justify-content: center;
-	align-items: center;
-`;
 
 export default function Project() {
 	return (

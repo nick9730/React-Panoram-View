@@ -16,20 +16,6 @@ const StyledPresentation = styled.div`
 `;
 
 export default function Presentation() {
-	//   const {appearProject,currentProject} = useProjects()
-	// const {id:IdParams} = useParams()
-
-	// // const {project}= useProjects();
-	// let data = [];
-
-	// useEffect(
-	//   function(){
-	//     appearProject(IdParams)
-	//     data.push(currentProject);
-
-	//   },
-	//   [appearProject,IdParams,currentProject]
-	// )
 
 	const { Images, isLoading } = useGetImages();
 
@@ -50,11 +36,9 @@ export default function Presentation() {
 						key={images.id}
 					/>
 				))}
-				{/* {
+			
   
-currentProject?.original &&
-  //  <ImageGallery slideDuration={1000} originalAlt="nikos"  showBullets={true} showThumbnails={true} slideInterval={true} items={data}/>
- }  */}
+
 			</StyledPresentation>
 		</IconContext.Provider>
 	);

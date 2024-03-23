@@ -8,15 +8,15 @@ import { deleteImage } from "../../servers/apiImages";
 export function useDeleteImage() {
 	const queryProject = useQueryClient();
 
-	const { mutate: deletedImage, isLoading: isDeleting } =
+	const { mutate: deletedImage, status: isDeleting } =
 		useMutation({
 			mutationFn: (id) => deleteImage(id),
-			refe: () => {
+			onSuccess: () => {
 				toast.success("The image has deleted succesfully");
 				queryProject.invalidateQueries({
-					queryKey: ["images_user", "image",'user_id'],
+					queryKey: ["images_user"],
 				});
 			},
 		});
-	return { deletedImage };
+	return { deletedImage,isDeleting };
 }

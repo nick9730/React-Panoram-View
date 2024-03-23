@@ -5,7 +5,7 @@ import {
 	useQueryClient,
 } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { GetTour, updateTour } from "../../servers/apiTour";
+import {  updateTour } from "../../servers/apiTour";
 
 export function useAddTour() {
 	const queryProject = useQueryClient();
@@ -20,5 +20,6 @@ export function useAddTour() {
 		},
 	});
 
+	
 	return { AddTour, isLoading };
 }

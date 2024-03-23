@@ -7,9 +7,10 @@ import { useUpdateImage } from "./useUpdateImage";
 import Button from "../../ui/Button";
 import { useParams } from "react-router-dom";
 import { Getuser } from "../Users/Getuser";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import styled from "styled-components";
 import Heading from "../../ui/Heading";
+import { UseModal } from "../ModalContext/ModalContext";
 
 const InputIvisible = styled.input`
 	border: 1px solid var(--color-grey-300);
@@ -72,101 +73,119 @@ const TextArea = styled.textarea`
 `;
 
 export default function AddImages() {
+	const { status, UpdatedImages } = useUpdateImage();
 	const { id: ParamsID } = useParams();
 	const { user } = Getuser();
 	const { id: userId } = user;
+	const { close } = UseModal();
 
-	const { register, handleSubmit } = useForm({
+	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			user_id: userId,
 			project_id: ParamsID,
 		},
 	});
-	const { isCreating, UpdatedImages } = useUpdateImage();
 
 	function onSubmit(data) {
-		console.log(data);
-		UpdatedImages({ ...data, image: data.image[0] });
+		UpdatedImages(
+			{ ...data, image: data.image[0] },
+			{
+				onSuccess: ({ data }) => {
+					reset();
+				},
+			}
+		);
 	}
- 
 
 	return (
-		<Form type="modal" onSubmit={handleSubmit(onSubmit)}>
-			{isCreating ? (
+		<>
+			{status === "pending" ? (
 				<BackgroundImages>
-					<PacmanLoader />
+					<ClipLoader
+						color="rgba(54, 215, 183, 1)"
+						size={40}
+						margin={90}
+					/>
 				</BackgroundImages>
 			) : (
 				<>
-					<FormRow
-						type={"uploadimage"}
-						style={{
-							display: "flex",
-							alignItems: "center",
-							paddingBottom: "60px",
-							marginRight: "150px",
-						}}
+					<Form
+						type="modal"
+						onSubmit={handleSubmit(onSubmit)}
 					>
-						<Heading as="h1">Upload photos</Heading>
-					</FormRow>
-					<FormRow type={"uploadimage"} label="Name  ">
-						<Input
-							id="name"
-							placeholder="Put the name of panorama photo"
-							type="text"
-							{...register("name", {
-								required: "This field is required",
-							})}
-						/>
-					</FormRow>
+						<FormRow
+							type={"uploadimage"}
+							style={{
+								display: "flex",
+								alignItems: "center",
+								paddingBottom: "60px",
+								marginRight: "150px",
+							}}
+						>
+							<Heading as="h1">Upload photos</Heading>
+						</FormRow>
+						<FormRow type={"uploadimage"} label="Name  ">
+							<Input
+								id="name"
+								placeholder="Put the name of panorama photo"
+								type="text"
+								{...register("name", {
+									required: "This field is required",
+								})}
+							/>
+						</FormRow>
 
-					<FormRow
-						type={"uploadimage"}
-						label="Insert your photo "
-					>
-						<FileInput
-							id="image"
-							accept="image/*"
-							type="file"
-							{...register("image", {
-								required: "The field is required",
-							})}
-						/>
-					</FormRow>
+						<FormRow
+							type={"uploadimage"}
+							label="Insert your photo "
+						>
+							<FileInput
+								id="image"
+								accept="image/*"
+								type="file"
+								{...register("image", {
+									required: "The field is required",
+								})}
+							/>
+						</FormRow>
 
-					<FormRow type={"uploadimage"} label="Information  ">
-						<TextArea
-							id="infos"
-							placeholder="Write some information for the room"
-							type="text"
-							{...register("infos", {
-								required: "This field is required",
-							})}
-						/>
-					</FormRow>
+						<FormRow
+							type={"uploadimage"}
+							label="Information  "
+						>
+							<TextArea
+								id="infos"
+								placeholder="Write some information for the room"
+								type="text"
+								{...register("infos", {
+									required: "This field is required",
+								})}
+							/>
+						</FormRow>
 
-					<InputIvisible
-						type="id"
-						value={userId}
-						{...register("user_id")}
-					/>
-					<InputIvisible
-						type="id"
-						value={ParamsID}
-						{...register("project_id")}
-					/>
-					<div
-						style={{
-							display: "flex",
-							alignItems: "flex-end",
-							width: "100%",
-							justifyContent: "flex-end",
-						}}
-					>
-						<Button>Add</Button>
-					</div>
+						<InputIvisible
+							type="id"
+							value={userId}
+							{...register("user_id")}
+						/>
+						<InputIvisible
+							type="id"
+							value={ParamsID}
+							{...register("project_id")}
+						/>
+						<div
+							style={{
+								display: "flex",
+								alignItems: "flex-end",
+								width: "100%",
+								justifyContent: "flex-end",
+							}}
+						>
+							<Button>Add</Button>
+						</div>
+					</Form>
 				</>
 			)}
-		</Form>
+		</>
 	);
 }

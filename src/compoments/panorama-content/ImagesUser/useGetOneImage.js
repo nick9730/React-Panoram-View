@@ -4,12 +4,10 @@ import {
 } from "@tanstack/react-query";
 import { Getuser } from "../Users/Getuser";
 import {
-	GetImages,
 	GetOneImage,
 } from "../../servers/apiImages";
 import { useParams } from "react-router-dom";
-import { useProjects } from "../../context/ContextProjext";
-import { useEffect } from "react";
+
 
 export function useGetOneImage(id) {
 	const queryProject = useQueryClient();
