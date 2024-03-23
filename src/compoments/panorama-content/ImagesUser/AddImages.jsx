@@ -88,6 +88,8 @@ export default function AddImages() {
 		console.log(data);
 		UpdatedImages({ ...data, image: data.image[0] });
 	}
+ 
+	  if (isCreating) return <PacmanLoader/>
 
 	return (
 		<Form type="modal" onSubmit={handleSubmit(onSubmit)}>
