@@ -17,7 +17,7 @@ export function useGetImages() {
 	const { data: Images, isLoading } = useQuery({
 		queryFn: () => GetImages(user_id, paramsId),
 		queryKey: ["images_user", "user_id", "paramsId", "image"],
-		refetch: () =>
+		onSuccess: () =>
 			queryProject.invalidateQueries({
 				queryKey: ["images_user", "paramsId", "image"],
 			}),

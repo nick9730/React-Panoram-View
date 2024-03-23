@@ -11,7 +11,7 @@ export function useDeleteImage() {
 	const { mutate: deletedImage, isLoading: isDeleting } =
 		useMutation({
 			mutationFn: (id) => deleteImage(id),
-			onSuccess: () => {
+			refe: () => {
 				toast.success("The image has deleted succesfully");
 				queryProject.invalidateQueries({
 					queryKey: ["images_user", "image",'user_id'],
