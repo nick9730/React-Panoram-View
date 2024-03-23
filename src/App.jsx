@@ -23,7 +23,6 @@ import { ContextProject } from "./compoments/context/ContextProjext";
 import Settings from "./compoments/panorama-content/Settings/Settings";
 import NotPageFound from "./compoments/pages/NotPageFound";
 import Tour from "./compoments/panorama-content/Hotspot/Tour";
-import SignUpForm from "./compoments/panorama-content/Users/SignUpForm";
 import SignUp from "./compoments/ui/SignUp";
 
 
