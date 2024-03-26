@@ -15,6 +15,10 @@ Also, there is one Navigation Bar that has Settings,Projects and Profile.
 
 In Profile you can change the information of your account.
 In Settings you can change the information of your panorama-configuration.
-In Projects you can add,remove,edit the projects of your account
+In Projects you can add,remove,edit the projects of your account`.
+
+
+![image](https://github.com/nick9730/React-Panorama-View/assets/134779828/33d90125-1686-430c-b363-35b47a6a35b8)
+
 
 
