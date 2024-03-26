@@ -9,7 +9,7 @@ I created one app called as The Panorama View that is based on:
 
 
 
-In this application you can register and later  will be able to upload the panorama-photos.Also, you will be able to add,edit and delete some hotspots in uploaded photos. In these hotspots you could add and remove the tour (the hotspot that have tour can send you in image that you want to go automatically).
+In this application you can register and later  will be able to upload the panorama-photos.Also, you will be able to add,edit and delete some hotspots of the uploaded photos. In these hotspots you could add and remove the tour (the hotspot that has tour could send you in image that you want to see automatically).
 
 Also, there is one Navigation Bar that has Settings,Projects and Profile.
 
