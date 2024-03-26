@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+
 import ReactPannellum, {
 	getConfig,
 	mouseEventToCoords,
@@ -9,11 +9,25 @@ import ReactPannellum, {
 import { useGetOneImage } from "../ImagesUser/useGetOneImage";
 import Button from "../../ui/Button";
 import { UseModal } from "../ModalContext/ModalContext";
+import styled from 'styled-components'
+
+	
+	
+const Content = styled.div`
+	width: 900px;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+    `;
 
 export default function AddHotSpotModal({ onCloseModal }) {
 	const { image } = useGetOneImage();
 	const imagePanorama = image ? image[0]?.image : "";
-	const { setPitch, setYaw, pitch: Pitch, yaw } = UseModal();
+	const { setPitch, setYaw} = UseModal();
+
 	const config = {
 		autoRotate: 0,
 		autoLoad: true,
@@ -27,7 +41,7 @@ export default function AddHotSpotModal({ onCloseModal }) {
 	};
 
 	const style = {
-		width: "1200px",
+		width: "900px",
 		height: "500px",
 	};
 
@@ -35,11 +49,10 @@ export default function AddHotSpotModal({ onCloseModal }) {
 		setPitch(mouseEventToCoords(e)[0]);
 		setYaw(mouseEventToCoords(e)[1]);
 
-		console.log("pitch " + Pitch, "yaw" + yaw);
 	}
 
 	return (
-		<>
+		<Content>
 			<ReactPannellum
 				id="1"
 				sceneId="firstScene"
@@ -50,6 +63,6 @@ export default function AddHotSpotModal({ onCloseModal }) {
 			<Button onClick={handleAddHotspot}>
 				Take Pitch and Yaw
 			</Button>
-		</>
+		</Content>
 	);
 }

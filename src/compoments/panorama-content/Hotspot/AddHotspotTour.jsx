@@ -12,6 +12,7 @@ import { useProjects } from "../../context/ContextProjext";
 import Button from "../../ui/Button";
 import Heading from "../../ui/Heading";
 import { UseModal } from "../ModalContext/ModalContext";
+import ButtonAddHotspot from "./ButtonAddHotspot";
 
 const Inputinvisible = styled.input`
 	visibility: none;
@@ -19,18 +20,21 @@ const Inputinvisible = styled.input`
 `;
 
 const PositionButton = styled.div`
+width: 100%;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
+	align-items: flex-start;
+	justify-content: flex-start;
+	
 `;
 export default function AddHotspotTour({ onCloseModal }) {
+
+
 	const { register, handleSubmit } = useForm({
 		defaultValues: { type: "custom" },
 	});
 
-	const { pitch, yaw, close } = UseModal();
+	const { pitch, yaw ,c} = UseModal();
 	const { id: paramsId } = useParams();
 
 	const { AddHotspot } = useAddHotspot();
@@ -38,11 +42,16 @@ export default function AddHotspotTour({ onCloseModal }) {
 	function onSubmiten(data) {
 		AddHotspot(
 			{ ...data },
-			{ onSuccess: () => onCloseModal?.() }
+
+			{
+				onSuccess:()=>onCloseModal?.()
+			}
+			
 		);
 	}
 
 	return (
+		<>
 		<Form onSubmit={handleSubmit(onSubmiten)}>
 			<FormRow>
 				<Heading as="h3">Add Hotspot Tour</Heading>
@@ -52,9 +61,9 @@ export default function AddHotspotTour({ onCloseModal }) {
 					type="text"
 					id="name"
 					{...register("name", {
-						required: "This field is required",
+						required: "This field is required",	
 					})}
-				/>
+					/>
 			</FormRow>
 			<FormRow label="pitch">
 				<Input
@@ -64,7 +73,7 @@ export default function AddHotspotTour({ onCloseModal }) {
 					{...register("pitch", {
 						required: "This field is required",
 					})}
-				/>
+					/>
 			</FormRow>
 			<FormRow label="Yaw">
 				<Input
@@ -74,7 +83,7 @@ export default function AddHotspotTour({ onCloseModal }) {
 					{...register("yaw", {
 						required: "This field is required",
 					})}
-				/>
+					/>
 			</FormRow>
 			<FormRow label="Info or Custom">
 				<Input
@@ -85,7 +94,7 @@ export default function AddHotspotTour({ onCloseModal }) {
 					{...register("type", {
 						required: "This field is required",
 					})}
-				/>
+					/>
 			</FormRow>
 
 			<Inputinvisible
@@ -94,12 +103,17 @@ export default function AddHotspotTour({ onCloseModal }) {
 				{...register("image_id", {
 					required: "This field is required",
 				})}
-			/>
+				/>
+<FormRow>
 
-			<PositionButton>
+				<PositionButton>
 				<Button>Add</Button>
-				<Button onClick={close}>Cancel</Button>
-			</PositionButton>
+				</PositionButton>
+  
+</FormRow>
+
+				
 		</Form>
+				</>
 	);
 }

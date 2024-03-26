@@ -49,6 +49,21 @@ const variations = {
 			background-color: var(--color-red-800);
 		}
 	`,
+		hotspot: css`
+	    color: var(--color-brand-50);
+		background-color: #00838e;
+		width: 180px;
+		font-weight: 700;
+		font-family: "Roboto";
+		&:hover {
+			background-color: var(--color-brand-700);
+			color: black;
+		}
+		position: absolute;
+        bottom: 35px;
+        right:100px;
+		
+	`,
 };
 
 const Button = styled.button`

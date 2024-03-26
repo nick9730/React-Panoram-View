@@ -10,6 +10,7 @@ import { useProjects } from "../../context/ContextProjext";
 import { useAddTour } from "../Hotspot/useAddTour";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { useGetTour } from "../Hotspot/useGetTour";
+import toast from "react-hot-toast";
 
 const ArticleOpen = styled.article`
 	position: fixed;
@@ -25,6 +26,10 @@ const ArticleOpen = styled.article`
 	justify-content: center;
 	background-color: none;
 `;
+
+const StyledNavlink = styled(NavLink)`
+	
+`
 
 const FirstModal = styled.div`
 	${(props) =>
@@ -113,6 +118,7 @@ export default function ModalContainer() {
 	const { deletedHotspot, isDeleting } = useDeleteHotspot();
 	const ref = useOutsideClick(close);
 
+
 	const getItem = Number(
 		JSON.parse(localStorage.getItem("project_id"))
 	);
@@ -133,7 +139,10 @@ export default function ModalContainer() {
 				id: id,
 				newTour: { ...Item },
 			},
-			{ onSuccess: () => close?.() }
+			{ onSuccess: () => {close?.()			
+				toast.success("Tour has succefully deleted");}
+			
+			}
 		);
 	}
 
@@ -185,14 +194,14 @@ export default function ModalContainer() {
 					</Button>
 				) : (
 					<>
-						<Button>
-							<NavLink
+							<StyledNavlink
 								onClick={() => setIsOpen(false)}
-								to={`/projects/${getItem}/tour/${data[0]?.tour}`}
-							>
+								to={`/projects/${getItem}/gallery/${data[0]?.tour}`}
+								>
+								<Button>
 								Go to next Room
-							</NavLink>
 						</Button>
+							</StyledNavlink>
 
 						<Button onClick={handleDeleteTour}>
 							Delete your Choice

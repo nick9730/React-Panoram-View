@@ -6,6 +6,8 @@ import { useGetTour } from "./useGetTour";
 import { useAddTour } from "./useAddTour";
 import Button from "../../ui/Button";
 import { useProjects } from "../../context/ContextProjext";
+import toast from "react-hot-toast";
+
 
 const Img = styled.img`
 	gap: 30px;
@@ -46,7 +48,9 @@ export default function ModalImages({ image }) {
 				id: data[0]?.id,
 				newTour: { ...Item },
 			},
-			{ onSuccess: () => close?.() }
+			{ onSuccess: () => {close?.()
+				toast.success("Tour has succefully created");}
+			 }
 		);
 	};
 

@@ -5,10 +5,6 @@ import styled from "styled-components";
 import { useLogout } from "./useLogout";
 
 import { ImExit } from "react-icons/im";
-import { IconContext } from "react-icons";
-import { RxExit } from "react-icons/rx";
-import { RiProjector2Fill } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
 
 const StyledAvatar = styled.div`
 	display: flex;
@@ -59,7 +55,7 @@ export default function Avatar() {
 
 	return (
 		<StyledAvatar>
-			<Img src={avatar} alt="nikos" />
+			<Img src={avatar} alt={` ${fullname}`} />
 			<StyledParagraph>{fullname}</StyledParagraph>
 			<StyledButton onClick={logout}>
 				<ImExit />

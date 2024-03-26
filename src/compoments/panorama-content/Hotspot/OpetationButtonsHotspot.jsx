@@ -11,6 +11,7 @@ import Button from "../../ui/Button";
 import AddHotspotInfo from "./AddHotspotInfo";
 import AddHotSpotModal from "./AddHotSpotModal";
 import AddHotspotTour from "./AddHotspotTour";
+import AddHotSpotFormPit from "./AddHotSpotFormPit";
 
 const StyledButton = styled.div`
 	display: flex;
@@ -18,28 +19,20 @@ const StyledButton = styled.div`
 	gap: 20px;
 `;
 
-const Div = styled.div`
-	width: 1500px;
-	height: vh;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-`;
 
-export default function OpetationButtonsHotspot({
-	onCloseModal,
-}) {
-	const [show, setShow] = useState(false);
-	const [url, setUrl] = useState();
+export default function OpetationButtonsHotspot({onCloseModal}) {
+
 
 	const location = useLocation();
-
+	
+	const [show, setShow] = useState(false);
+	const [url, setUrl] = useState();
+	
 	function TakeUrl() {
 		setShow(!show);
 		setUrl(location);
 	}
-
+	
 	return (
 		<StyledButton>
 			<Button onClick={TakeUrl}>Share Link</Button>
@@ -49,7 +42,7 @@ export default function OpetationButtonsHotspot({
 			<Modal>
 				<Menus.Menu>
 					<Modal.Open opens="add">
-						<Button>Add Info Button</Button>
+						<Button >Add Info Button</Button>
 					</Modal.Open>
 
 					<Modal.Window name="add">
@@ -61,17 +54,15 @@ export default function OpetationButtonsHotspot({
 			<Modal>
 				<Menus.Menu>
 					<Modal.Open opens="addTour">
-						<Button> Add Tour Button</Button>
+						<Button > Add Tour Button</Button>
 					</Modal.Open>
 
 					<Modal.Window name="addTour">
-						<Div>
-							<AddHotSpotModal onCloseModal={onCloseModal} />
-							<AddHotspotTour onCloseModal={onCloseModal} />
-						</Div>
+					<AddHotSpotFormPit onCloseModal={onCloseModal}/>
 					</Modal.Window>
 				</Menus.Menu>
 			</Modal>
 		</StyledButton>
 	);
+
 }
