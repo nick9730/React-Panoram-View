@@ -5,7 +5,7 @@ const Form = styled.form`
 		props.type === "regular" &&
 		css`
 			padding: 2.4rem 4rem;
-			width: 150rem;
+			width: 152rem;
 			display: flex;
 			flex-direction: column;
 			align-items: center;

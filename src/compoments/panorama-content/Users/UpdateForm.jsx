@@ -98,7 +98,7 @@ function UpdateUserDataForm() {
 						alignItems: "flex-start",
 						paddingBottom: "60px",
 						width: "100%",
-						marginLeft: "-360px",
+					  
 					}}
 				>
 					<Heading as="h1">Update your Information</Heading>
