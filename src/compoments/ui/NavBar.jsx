@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import {
 	IoAlbums,
-	IoCamera,
 	IoPerson,
 	IoSettings,
 } from "react-icons/io5";
-import { RiProjector2Fill } from "react-icons/ri";
+import { useInsertSetting } from "../panorama-content/Settings/useInsertSettings";
+import { useGetSetting } from "../panorama-content/Settings/useGetSettings";
+import { Getuser } from "../panorama-content/Users/Getuser";
+
 const NavList = styled.ul`
 	display: flex;
 	flex-direction: column;
@@ -27,7 +29,6 @@ const StyledNavLink = styled(NavLink)`
 		padding: 10px;
 	}
 
-	/* This works because react-router places the active class on the active NavLink */
 	&:hover,
 	&:active,
 	&.active:link,
@@ -65,10 +66,34 @@ const SpanOne = styled.span`
 	padding-left: 20px;
 `;
 export default function NavBar() {
+	const { InsertSetting } = useInsertSetting();
+	const { settings } = useGetSetting();
+	const { user } = Getuser();
+	const { id } = user;
+
+	const user_id = settings?.at(0)?.user_id;
+
+	function handleInsertSettings(e) {
+		if (user_id === id) return;
+
+		const SettingItem = {
+			pitch: 140,
+			yaw: 140,
+			autoload: true,
+			autoRotate: 1,
+			user_id: id,
+		};
+
+		InsertSetting({
+			newSetting: {
+				...SettingItem,
+			},
+		});
+	}
+
 	return (
 		<nav>
 			<NavList>
-				{/* <li><StyledNavLink to="/dashboard"><span>Dashboard</span></StyledNavLink></li> */}
 				<li>
 					<StyledNavLink to="/profile">
 						<Span>
@@ -88,7 +113,10 @@ export default function NavBar() {
 					</StyledNavLink>
 				</li>
 				<li>
-					<StyledNavLink to="/settings">
+					<StyledNavLink
+						onClick={handleInsertSettings}
+						to="/settings"
+					>
 						{" "}
 						<Span>
 							<IoSettings />

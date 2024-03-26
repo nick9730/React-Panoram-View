@@ -17,7 +17,6 @@ const Info = styled.div`
 	flex-direction: column;
 `;
 
-
 const StyledName = styled.div`
 	text-decoration: solid;
 	line-height: 12px;
@@ -79,20 +78,17 @@ const StyledNavLinkj = styled(NavLink)`
 	}
 `;
 
-
 const Img = styled.img`
-
 	transition: 2s;
 	width: 800px;
 	height: 400px;
 `;
 
-
 export default function GetItemImages({ images, index }) {
 	const [hover, setHover] = useState(false);
 	const [show, setShow] = useState(false);
 	const [id, setId] = useState();
-	const { deletedImage,status } = useDeleteImage();
+	const { deletedImage, status } = useDeleteImage();
 	const { Images } = useGetImages();
 	const { id: ParamsID } = useParams();
 	const { id: ImageId, name } = images;
@@ -104,23 +100,18 @@ export default function GetItemImages({ images, index }) {
 		);
 	}, [ParamsID]);
 
-
-  if (status==='pending'){
-	return "xxxx"
-  }
-
+	if (status === "pending") {
+		return "xxxx";
+	}
 
 	function MouseOver() {
 		setHover(true);
-
 	}
 	function MouseDown() {
 		setHover(false);
-	
 	}
 
 	function Edit() {
-		
 		localStorage.setItem("index", JSON.stringify(index));
 	}
 	return (

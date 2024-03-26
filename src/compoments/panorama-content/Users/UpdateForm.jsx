@@ -64,7 +64,6 @@ function UpdateUserDataForm() {
 		email,
 		user_metadata: { fullname: currentFullName },
 	} = user;
-	// const { updateUser1, isUpdating } = useUpdateUser();
 	const [avatar, setAvatar] = useState(null);
 	const [fullname, setFullName] = useState(currentFullName);
 
@@ -72,7 +71,7 @@ function UpdateUserDataForm() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		console.log(user);
+
 		if (!fullname) return;
 		updateUser1(
 			{ fullname, avatar },

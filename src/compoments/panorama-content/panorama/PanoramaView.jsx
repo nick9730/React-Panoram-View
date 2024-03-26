@@ -34,7 +34,7 @@ export default function PanoramaView() {
 		setModalIsOpened,
 		setIndex,
 	} = UseModal();
-	
+
 	const { setHotspotID } = UseModal();
 
 	if (!image) return;

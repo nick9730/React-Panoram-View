@@ -16,8 +16,6 @@ const Inputinvisible = styled.input`
 `;
 
 export default function AddForm({ onCloseModal }) {
-
-
 	const { createdProject, isCreating } = AddProject();
 	const { handleSubmit, formState, register, reset } =
 		useForm();
@@ -27,7 +25,7 @@ export default function AddForm({ onCloseModal }) {
 		createdProject(
 			{ ...data },
 			{
-				onSuccess: ({data}) => {
+				onSuccess: ({ data }) => {
 					reset();
 					onCloseModal?.();
 				},

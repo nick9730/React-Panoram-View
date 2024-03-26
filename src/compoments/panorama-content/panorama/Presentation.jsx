@@ -16,7 +16,6 @@ const StyledPresentation = styled.div`
 `;
 
 export default function Presentation() {
-
 	const { Images, isLoading } = useGetImages();
 
 	return (
@@ -36,9 +35,6 @@ export default function Presentation() {
 						key={images.id}
 					/>
 				))}
-			
-  
-
 			</StyledPresentation>
 		</IconContext.Provider>
 	);

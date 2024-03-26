@@ -15,7 +15,6 @@ const StyledAppLayout = styled.div`
 	overflow: hidden;
 	background-color: hsl(240, 13%, 16%);
 `;
-// password of supabase === VOhQHilvH5srUp0O
 
 const Main = styled.main`
 	background-color: hsl(244, 13%, 21%);

@@ -17,17 +17,16 @@ export function useUpdateImage() {
 	const { id: IdParams } = useParams();
 	const queryProject = useQueryClient();
 
-	const {status, mutate: UpdatedImages } =
-		useMutation({
-			mutationFn: (newImage) =>
-				UpdateImages(newImage, user_id, IdParams),
-			onSuccess: () => {
-				toast.success("Image has succefully created");
-				queryProject.invalidateQueries({
-					queryKey: ["images_user"],
-				});
-			},
-		});
+	const { status, mutate: UpdatedImages } = useMutation({
+		mutationFn: (newImage) =>
+			UpdateImages(newImage, user_id, IdParams),
+		onSuccess: () => {
+			toast.success("Image has succefully created");
+			queryProject.invalidateQueries({
+				queryKey: ["images_user"],
+			});
+		},
+	});
 
 	return { status, UpdatedImages };
 }

@@ -14,7 +14,6 @@ import ProjectPreview from "./compoments/pages/ProjectPreview";
 import Gallery from "./compoments/panorama-content/panorama/Gallery";
 import Applayout from "./compoments/ui/Applayout";
 
-
 import {
 	QueryClient,
 	QueryClientProvider,
@@ -30,12 +29,9 @@ import Settings from "./compoments/panorama-content/Settings/Settings";
 import NotPageFound from "./compoments/pages/NotPageFound";
 import Tour from "./compoments/panorama-content/Hotspot/Tour";
 import SignUp from "./compoments/ui/SignUp";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-// k3fmsj3MLuyfCxyN
-
-const queryProject = new QueryClient({
-});
+const queryProject = new QueryClient({});
 
 function App() {
 	return (
@@ -76,7 +72,7 @@ function App() {
 								element={<Settings />}
 							></Route>
 							<Route
-							path="/projects/:id/tour/:id"
+								path="/projects/:id/tour/:id"
 								element={<Tour />}
 							></Route>
 						</Route>
@@ -102,7 +98,7 @@ function App() {
 						success: {
 							duration: 3000,
 						},
-						
+
 						error: {
 							duration: 500,
 						},
@@ -115,7 +111,6 @@ function App() {
 						},
 					}}
 				/>
-             
 			</QueryClientProvider>
 		</ContextProject>
 	);

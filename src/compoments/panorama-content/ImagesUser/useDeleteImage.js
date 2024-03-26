@@ -18,5 +18,5 @@ export function useDeleteImage() {
 				});
 			},
 		});
-	return { deletedImage,isDeleting };
+	return { deletedImage, isDeleting };
 }

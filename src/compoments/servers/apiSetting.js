@@ -13,13 +13,25 @@ export async function getSettings(id) {
 }
 
 export async function updateSettings(id, newSettings) {
-	console.log(newSettings, id);
 	const { data, error } = await supabase
 		.from("settings")
 		.update({ ...newSettings })
-		.eq("id", id)
-		.select()
-		.single();
+		.select("*", "user(*)")
+		.eq("user_id", id);
+
+	if (error) {
+		throw new Error("Projects could not be edited");
+	}
+
+	return data;
+}
+
+export async function insertSetting(id, newSettings) {
+	console.log(newSettings);
+	const { data, error } = await supabase
+		.from("settings")
+		.insert([{ ...newSettings }])
+		.select();
 
 	if (error) {
 		throw new Error("Projects could not be edited");
