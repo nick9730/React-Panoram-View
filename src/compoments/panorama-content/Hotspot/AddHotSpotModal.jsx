@@ -9,10 +9,8 @@ import ReactPannellum, {
 import { useGetOneImage } from "../ImagesUser/useGetOneImage";
 import Button from "../../ui/Button";
 import { UseModal } from "../ModalContext/ModalContext";
-import styled from 'styled-components'
+import styled from "styled-components";
 
-	
-	
 const Content = styled.div`
 	width: 900px;
 	height: 50vh;
@@ -21,12 +19,12 @@ const Content = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-    `;
+`;
 
 export default function AddHotSpotModal({ onCloseModal }) {
 	const { image } = useGetOneImage();
 	const imagePanorama = image ? image[0]?.image : "";
-	const { setPitch, setYaw} = UseModal();
+	const { setPitch, setYaw } = UseModal();
 
 	const config = {
 		autoRotate: 0,
@@ -48,7 +46,6 @@ export default function AddHotSpotModal({ onCloseModal }) {
 	function handleAddHotspot(e) {
 		setPitch(mouseEventToCoords(e)[0]);
 		setYaw(mouseEventToCoords(e)[1]);
-
 	}
 
 	return (

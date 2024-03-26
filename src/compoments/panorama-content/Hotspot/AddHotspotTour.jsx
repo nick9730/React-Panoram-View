@@ -20,21 +20,18 @@ const Inputinvisible = styled.input`
 `;
 
 const PositionButton = styled.div`
-width: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
 	justify-content: flex-start;
-	
 `;
 export default function AddHotspotTour({ onCloseModal }) {
-
-
 	const { register, handleSubmit } = useForm({
 		defaultValues: { type: "custom" },
 	});
 
-	const { pitch, yaw ,c} = UseModal();
+	const { pitch, yaw, c } = UseModal();
 	const { id: paramsId } = useParams();
 
 	const { AddHotspot } = useAddHotspot();
@@ -44,76 +41,71 @@ export default function AddHotspotTour({ onCloseModal }) {
 			{ ...data },
 
 			{
-				onSuccess:()=>onCloseModal?.()
+				onSuccess: () => onCloseModal?.(),
 			}
-			
 		);
 	}
 
 	return (
 		<>
-		<Form onSubmit={handleSubmit(onSubmiten)}>
-			<FormRow>
-				<Heading as="h3">Add Hotspot Tour</Heading>
-			</FormRow>
-			<FormRow label="Name">
-				<Input
-					type="text"
-					id="name"
-					{...register("name", {
-						required: "This field is required",	
-					})}
+			<Form onSubmit={handleSubmit(onSubmiten)}>
+				<FormRow>
+					<Heading as="h3">Add Hotspot Tour</Heading>
+				</FormRow>
+				<FormRow label="Name">
+					<Input
+						type="text"
+						id="name"
+						{...register("name", {
+							required: "This field is required",
+						})}
 					/>
-			</FormRow>
-			<FormRow label="pitch">
-				<Input
-					type="number"
-					value={pitch ? pitch : ""}
-					id="name"
-					{...register("pitch", {
-						required: "This field is required",
-					})}
+				</FormRow>
+				<FormRow label="pitch">
+					<Input
+						type="number"
+						value={pitch ? pitch : ""}
+						id="name"
+						{...register("pitch", {
+							required: "This field is required",
+						})}
 					/>
-			</FormRow>
-			<FormRow label="Yaw">
-				<Input
-					type="number"
-					value={yaw ? yaw : ""}
-					id="name"
-					{...register("yaw", {
-						required: "This field is required",
-					})}
+				</FormRow>
+				<FormRow label="Yaw">
+					<Input
+						type="number"
+						value={yaw ? yaw : ""}
+						id="name"
+						{...register("yaw", {
+							required: "This field is required",
+						})}
 					/>
-			</FormRow>
-			<FormRow label="Info or Custom">
-				<Input
-					type="text"
-					value="custom"
-					disabled
-					id="type"
-					{...register("type", {
-						required: "This field is required",
-					})}
+				</FormRow>
+				<FormRow label="Info or Custom">
+					<Input
+						type="text"
+						value="custom"
+						disabled
+						id="type"
+						{...register("type", {
+							required: "This field is required",
+						})}
 					/>
-			</FormRow>
+				</FormRow>
 
-			<Inputinvisible
-				value={paramsId}
-				placeholder="Give a number of photos in project"
-				{...register("image_id", {
-					required: "This field is required",
-				})}
+				<Inputinvisible
+					value={paramsId}
+					placeholder="Give a number of photos in project"
+					{...register("image_id", {
+						required: "This field is required",
+					})}
 				/>
-<FormRow>
-
-				<PositionButton>
-				<Button>Add</Button>
-				</PositionButton>
-  
-</FormRow>
-
-				
-		</Form>
-				</>
+				<FormRow>
+					<PositionButton>
+						<Button>Add</Button>
+					</PositionButton>
+				</FormRow>
+			</Form>
+		</>
 	);
 }

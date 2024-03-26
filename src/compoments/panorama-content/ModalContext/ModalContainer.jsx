@@ -27,9 +27,7 @@ const ArticleOpen = styled.article`
 	background-color: none;
 `;
 
-const StyledNavlink = styled(NavLink)`
-	
-`
+const StyledNavlink = styled(NavLink)``;
 
 const FirstModal = styled.div`
 	${(props) =>
@@ -118,7 +116,6 @@ export default function ModalContainer() {
 	const { deletedHotspot, isDeleting } = useDeleteHotspot();
 	const ref = useOutsideClick(close);
 
-
 	const getItem = Number(
 		JSON.parse(localStorage.getItem("project_id"))
 	);
@@ -139,9 +136,11 @@ export default function ModalContainer() {
 				id: id,
 				newTour: { ...Item },
 			},
-			{ onSuccess: () => {close?.()			
-				toast.success("Tour has succefully deleted");}
-			
+			{
+				onSuccess: () => {
+					close?.();
+					toast.success("Tour has succefully deleted");
+				},
 			}
 		);
 	}
@@ -194,14 +193,12 @@ export default function ModalContainer() {
 					</Button>
 				) : (
 					<>
-							<StyledNavlink
-								onClick={() => setIsOpen(false)}
-								to={`/projects/${getItem}/gallery/${data[0]?.tour}`}
-								>
-								<Button>
-								Go to next Room
-						</Button>
-							</StyledNavlink>
+						<StyledNavlink
+							onClick={() => setIsOpen(false)}
+							to={`/projects/${getItem}/gallery/${data[0]?.tour}`}
+						>
+							<Button>Go to next Room</Button>
+						</StyledNavlink>
 
 						<Button onClick={handleDeleteTour}>
 							Delete your Choice

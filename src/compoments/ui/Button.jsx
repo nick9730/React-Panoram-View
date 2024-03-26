@@ -49,8 +49,8 @@ const variations = {
 			background-color: var(--color-red-800);
 		}
 	`,
-		hotspot: css`
-	    color: var(--color-brand-50);
+	hotspot: css`
+		color: var(--color-brand-50);
 		background-color: #00838e;
 		width: 180px;
 		font-weight: 700;
@@ -60,9 +60,8 @@ const variations = {
 			color: black;
 		}
 		position: absolute;
-        bottom: 35px;
-        right:100px;
-		
+		bottom: 35px;
+		right: 100px;
 	`,
 };
 

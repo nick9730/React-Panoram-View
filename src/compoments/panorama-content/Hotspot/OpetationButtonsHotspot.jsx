@@ -19,20 +19,19 @@ const StyledButton = styled.div`
 	gap: 20px;
 `;
 
-
-export default function OpetationButtonsHotspot({onCloseModal}) {
-
-
+export default function OpetationButtonsHotspot({
+	onCloseModal,
+}) {
 	const location = useLocation();
-	
+
 	const [show, setShow] = useState(false);
 	const [url, setUrl] = useState();
-	
+
 	function TakeUrl() {
 		setShow(!show);
 		setUrl(location);
 	}
-	
+
 	return (
 		<StyledButton>
 			<Button onClick={TakeUrl}>Share Link</Button>
@@ -42,7 +41,7 @@ export default function OpetationButtonsHotspot({onCloseModal}) {
 			<Modal>
 				<Menus.Menu>
 					<Modal.Open opens="add">
-						<Button >Add Info Button</Button>
+						<Button>Add Info Button</Button>
 					</Modal.Open>
 
 					<Modal.Window name="add">
@@ -54,15 +53,14 @@ export default function OpetationButtonsHotspot({onCloseModal}) {
 			<Modal>
 				<Menus.Menu>
 					<Modal.Open opens="addTour">
-						<Button > Add Tour Button</Button>
+						<Button> Add Tour Button</Button>
 					</Modal.Open>
 
 					<Modal.Window name="addTour">
-					<AddHotSpotFormPit onCloseModal={onCloseModal}/>
+						<AddHotSpotFormPit onCloseModal={onCloseModal} />
 					</Modal.Window>
 				</Menus.Menu>
 			</Modal>
 		</StyledButton>
 	);
-
 }

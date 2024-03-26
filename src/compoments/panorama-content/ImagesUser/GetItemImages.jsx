@@ -84,18 +84,13 @@ const Img = styled.img`
 	height: 400px;
 `;
 
-const StyledNavLink = styled(NavLink)`	
-    transition: 2s;
+const StyledNavLink = styled(NavLink)`
+	transition: 2s;
 	width: 800px;
 	height: 400px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	
-
-
-	
-	`
-
+`;
 
 export default function GetItemImages({ images, index }) {
 	const [hover, setHover] = useState(false);
@@ -137,14 +132,14 @@ export default function GetItemImages({ images, index }) {
 						onMouseOver={MouseOver}
 						onMouseOut={MouseDown}
 					>
-						<StyledNavLink to={`/projects/${ParamsID}/gallery/${ImageId}`}>
-
-						<Img
-							
-							src={Images[index]?.image}
-							alt={`${Images[index]?.name}`}
+						<StyledNavLink
+							to={`/projects/${ParamsID}/gallery/${ImageId}`}
+						>
+							<Img
+								src={Images[index]?.image}
+								alt={`${Images[index]?.name}`}
 							/>
-							</StyledNavLink>
+						</StyledNavLink>
 
 						<ButtonPosition onEdit={Edit}>
 							<Button onClick={() => deletedImage(ImageId)}>
